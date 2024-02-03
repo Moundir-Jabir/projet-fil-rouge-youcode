@@ -1,4 +1,4 @@
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import Profil from "../components/Profil";
 import Screen from "../components/Screen";
 import colors from "../styles/colors";
@@ -22,7 +22,7 @@ const MyAccountScreen = () => {
         name: "email",
         background: colors.green,
       },
-    },
+    }
   ];
 
   return (
@@ -32,8 +32,8 @@ const MyAccountScreen = () => {
         title={"Mosh Hamedani"}
         subTitle="programing@gmail.com"
       />
+      <View style={styles.flatlistContainer}>
       <FlatList
-        style={styles.flatlistContainer}
         data={menus}
         keyExtractor={(menus) => menus.id.toString()}
         renderItem={({ item }) => (
@@ -45,6 +45,7 @@ const MyAccountScreen = () => {
         )}
         ItemSeparatorComponent={ListItemSeparator}
       />
+      </View>
       <MenuItem name="logout" background="#ffe66d" title="Log Out" />
     </Screen>
   );
@@ -55,6 +56,5 @@ export default MyAccountScreen;
 const styles = StyleSheet.create({
   flatlistContainer: {
     marginVertical: 20,
-    flex: 1,
   },
 });

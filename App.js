@@ -8,11 +8,12 @@ import Card from "./src/components/Card";
 import ListingDetailScreen from "./src/screens/ListingDetailScreen";
 import MessagesScreen from "./src/screens/MessagesScreen";
 import MyAccountScreen from "./src/screens/MyAccountScreen";
+import ListingScreen from "./src/screens/ListingScreen";
 
 export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <MyAccountScreen />
+      <ListingScreen />
       <StatusBar barStyle={"dark-content"} />
     </GestureHandlerRootView>
   );
