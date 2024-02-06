@@ -1,7 +1,7 @@
 import { FlatList, StyleSheet, View } from "react-native";
 import Profil from "../components/Profil";
 import Screen from "../components/Screen";
-import colors from "../styles/colors";
+import colors from "../config/colors";
 import MenuItem from "../components/MenuItem";
 import ListItemSeparator from "../components/ListItemSeparator";
 

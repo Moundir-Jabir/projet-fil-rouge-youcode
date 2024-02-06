@@ -1,6 +1,6 @@
 import { Image, StyleSheet, View, TouchableOpacity } from "react-native";
 
-import colors from "../styles/colors";
+import colors from "../config/colors";
 import AppText from "./AppText";
 
 const Card = ({ title, subTitle, image }) => {

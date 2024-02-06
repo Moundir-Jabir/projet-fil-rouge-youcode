@@ -1,7 +1,7 @@
 import { View, StyleSheet } from "react-native";
 import Icon from "./Icon";
 import AppText from "./AppText";
-import colors from "../styles/colors";
+import colors from "../config/colors";
 
 const MenuItem = ({ name, color, size, background, title }) => {
   return (

@@ -1,6 +1,6 @@
 import { StyleSheet, View, Image } from "react-native";
 import AppText from "./AppText";
-import colors from "../styles/colors";
+import colors from "../config/colors";
 
 const Profil = ({ image, title, subTitle }) => {
   return (
