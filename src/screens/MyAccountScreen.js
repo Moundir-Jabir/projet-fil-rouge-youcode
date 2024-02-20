@@ -3,7 +3,7 @@ import Profil from "../components/Profil";
 import Screen from "../components/Screen";
 import colors from "../config/colors";
 import MenuItem from "../components/MenuItem";
-import ListItemSeparator from "../components/ListItemSeparator";
+import ListItemSeparator from "../components/lists/ListItemSeparator";
 
 const MyAccountScreen = () => {
   const menus = [

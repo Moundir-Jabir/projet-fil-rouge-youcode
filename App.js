@@ -7,23 +7,14 @@ import ListingDetailScreen from "./src/screens/ListingDetailScreen";
 import MessagesScreen from "./src/screens/MessagesScreen";
 import MyAccountScreen from "./src/screens/MyAccountScreen";
 import ListingScreen from "./src/screens/ListingScreen";
-import Screen from "./src/components/Screen";
-import AppTextInput from "./src/components/AppTextInput";
-import AppText from "./src/components/AppText";
-import AppPicker from "./src/components/AppPicker";
-import { useState } from "react";
 import LoginScreen from "./src/screens/LoginScreen";
+import RegisterScreen from "./src/screens/RegisterScreen";
+import ListingEditScreen from "./src/screens/ListingEditScreen";
 
 export default function App() {
-  const categories = [
-    { label: "Furniture", value: 1 },
-    { label: "Clothing", value: 2 },
-    { label: "Cameras", value: 3 }
-  ]
-  const [category, setCategory] = useState(categories[0])
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <LoginScreen/>
+      <MessagesScreen/>
       <StatusBar barStyle={"dark-content"} />
     </GestureHandlerRootView>
   );
