@@ -1,6 +1,10 @@
 import { FlatList } from "react-native";
 import Screen from "../components/Screen";
-import { ListItem, ListItemDeleteAction, ListItemSeparator } from "../components/lists";
+import {
+  ListItem,
+  ListItemDeleteAction,
+  ListItemSeparator,
+} from "../components/lists";
 import { useState } from "react";
 
 const msg = [
@@ -39,6 +43,7 @@ const MessagesScreen = () => {
           <ListItem
             image={require("../assets/mosh.jpg")}
             title={item.title}
+            showChevrons={true}
             subTitle={item.description}
             onPress={() => console.log(item)}
             renderRightActions={() => (

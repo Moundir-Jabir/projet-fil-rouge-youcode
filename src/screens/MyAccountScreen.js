@@ -22,7 +22,7 @@ const MyAccountScreen = () => {
         name: "email",
         background: colors.green,
       },
-    }
+    },
   ];
 
   return (
@@ -33,18 +33,18 @@ const MyAccountScreen = () => {
         subTitle="programing@gmail.com"
       />
       <View style={styles.flatlistContainer}>
-      <FlatList
-        data={menus}
-        keyExtractor={(menus) => menus.id.toString()}
-        renderItem={({ item }) => (
-          <MenuItem
-            name={item.icon.name}
-            background={item.icon.background}
-            title={item.title}
-          />
-        )}
-        ItemSeparatorComponent={ListItemSeparator}
-      />
+        <FlatList
+          data={menus}
+          keyExtractor={(menus) => menus.id.toString()}
+          renderItem={({ item }) => (
+            <MenuItem
+              name={item.icon.name}
+              background={item.icon.background}
+              title={item.title}
+            />
+          )}
+          ItemSeparatorComponent={ListItemSeparator}
+        />
       </View>
       <MenuItem name="logout" background="#ffe66d" title="Log Out" />
     </Screen>

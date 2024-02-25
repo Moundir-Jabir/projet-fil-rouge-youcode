@@ -14,7 +14,7 @@ import ListingEditScreen from "./src/screens/ListingEditScreen";
 export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <MessagesScreen/>
+      <MessagesScreen />
       <StatusBar barStyle={"dark-content"} />
     </GestureHandlerRootView>
   );

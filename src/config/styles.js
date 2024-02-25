@@ -1,5 +1,5 @@
-import { Platform } from "react-native"
-import colors from "./colors"
+import { Platform } from "react-native";
+import colors from "./colors";
 
 export default {
   text: {
@@ -7,4 +7,4 @@ export default {
     fontSize: 18,
     fontFamily: Platform.OS === "android" ? "Roboto" : "Avenir",
   },
-}
+};

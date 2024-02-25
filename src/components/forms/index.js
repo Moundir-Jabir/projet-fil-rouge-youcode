@@ -4,4 +4,4 @@ import ErrorMessage from "./ErrorMessage";
 import SubmitButton from "./SubmitButton";
 import AppFormPicker from "./AppFormPicker";
 
-export { AppForm, AppFormField, ErrorMessage, SubmitButton, AppFormPicker }
+export { AppForm, AppFormField, ErrorMessage, SubmitButton, AppFormPicker };
