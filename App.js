@@ -1,6 +1,5 @@
 import { StatusBar } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-
 import ViewImageScreen from "./src/screens/ViewImageScreen";
 import WelcomeScreen from "./src/screens/WelcomeScreen";
 import ListingDetailScreen from "./src/screens/ListingDetailScreen";
@@ -10,11 +9,12 @@ import ListingScreen from "./src/screens/ListingScreen";
 import LoginScreen from "./src/screens/LoginScreen";
 import RegisterScreen from "./src/screens/RegisterScreen";
 import ListingEditScreen from "./src/screens/ListingEditScreen";
+import Screen from "./src/components/Screen";
 
 export default function App() {
   return (
     <GestureHandlerRootView style={{ flex: 1 }}>
-      <MessagesScreen />
+      <ListingEditScreen />
       <StatusBar barStyle={"dark-content"} />
     </GestureHandlerRootView>
   );

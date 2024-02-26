@@ -18,15 +18,20 @@ const ListItem = ({
         <View style={styles.container}>
           <Image style={styles.image} source={image} />
           <View style={styles.textContainer}>
-            <AppText style={styles.title}>{title}</AppText>
-            {subTitle && <AppText style={styles.subTitle}>{subTitle}</AppText>}
+            <AppText style={styles.title} numberOfLines={1}>
+              {title}
+            </AppText>
+            {subTitle && (
+              <AppText style={styles.subTitle} numberOfLines={2}>
+                {subTitle}
+              </AppText>
+            )}
           </View>
           {showChevrons && (
             <MaterialCommunityIcons
               name="chevron-right"
               color={colors.medium}
               size={25}
-              style={styles.icon}
             />
           )}
         </View>
@@ -49,6 +54,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
   },
   textContainer: {
+    flex: 1,
     paddingLeft: 10,
   },
   title: {
@@ -56,9 +62,5 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     color: colors.medium,
-  },
-  icon: {
-    position: "absolute",
-    right: 20,
   },
 });

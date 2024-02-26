@@ -10,8 +10,9 @@ import { useState } from "react";
 const msg = [
   {
     id: 1,
-    title: "T1",
-    description: "D1",
+    title: `ListItem component so it shows chevrons on the right side.Bonus exercise: Make the chevrons optional. So, the ListItem component should have a booleanljlkjsdljflsdjklfjdkslfjlkdsjflkjdsfdlksfjlkdsjflkjdsklfjdslkjflsdjfkldsjflkdsjflkjdslkfjdslkfjlsdjflkdjsflkjdslkfjdslkfjsdjkflsjkdfl;sjkd;lfkop called showChevrons. With this, when using the ListItem, we can decide if we want to see the chevrons or not. I haven’t implemented this in this section, though.`,
+    description:
+      "istItem component so it shows chevrons on the right side.Bonus exercise: Make the chevrons optional. So, the ListItem component should have a booleanljlkjsdljflsdjklfjdkslfjlkdsjflkjdsfdlksfjlkdsjflkjdsklfjdslkjflsdjfkldsjflkdsjflkjdslkfjdslkfjlsdjflkdjsflkjdslkfjdslkfjsdjkflsjkdfl;sjkd;lfkop called showChevrons. With this, when using the ListItem, we can decide if we want to see the chevrons or not. I haven’t implemented this in this section, tho",
   },
   {
     id: 2,

@@ -8,7 +8,9 @@ const Card = ({ title, subTitle, image }) => {
     <TouchableOpacity style={styles.container}>
       <Image source={image} style={styles.image} />
       <View style={styles.textContainer}>
-        <AppText style={styles.title}>{title}</AppText>
+        <AppText style={styles.title} numberOfLines={2}>
+          {title}
+        </AppText>
         <AppText style={styles.subTitle}>{subTitle}</AppText>
       </View>
     </TouchableOpacity>

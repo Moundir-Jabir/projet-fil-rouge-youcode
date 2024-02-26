@@ -19,12 +19,15 @@ const AppPicker = ({
   items,
   selectedItem,
   setSelectedItem,
+  numberOfColumns = 1,
+  PickerItemComponent = PickerItem,
+  width = "100%",
 }) => {
   const [isVisible, setIsvisible] = useState(false);
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setIsvisible(true)}>
-        <View style={styles.container}>
+        <View style={[styles.container, { width }]}>
           {icon && (
             <MaterialCommunityIcons
               name={icon}
@@ -50,10 +53,15 @@ const AppPicker = ({
           <Button title="close" onPress={() => setIsvisible(false)} />
           <FlatList
             data={items}
+            contentContainerStyle={{
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            numColumns={numberOfColumns}
             keyExtractor={(item, i) => i}
             renderItem={({ item }) => (
-              <PickerItem
-                label={item.label}
+              <PickerItemComponent
+                item={item}
                 onPress={() => {
                   setSelectedItem(item);
                   setIsvisible(false);
@@ -75,7 +83,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     flexDirection: "row",
     alignItems: "center",
-    width: "100%",
     padding: 15,
     marginVertical: 10,
   },
