@@ -31,6 +31,12 @@
           {
             "photosPermission": "The app accesses your photos to let you share some photos of the product that you want to sell"
           }
+        ],
+        [
+          "expo-location",
+          {
+            "locationWhenInUsePermission": "Allow the app to use your location."
+          }
         ]
       ]
     }

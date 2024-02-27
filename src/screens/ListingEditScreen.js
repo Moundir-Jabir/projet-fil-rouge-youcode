@@ -1,5 +1,5 @@
 import Screen from "../components/Screen";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Text } from "react-native";
 import * as Yup from "yup";
 import {
   AppForm,
@@ -9,6 +9,7 @@ import {
   AppFormImagePicker,
 } from "../components/forms";
 import CategoryPickerItem from "../components/CategoryPickerItem";
+import useLocation from "../hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(3).label("Title"),
@@ -26,6 +27,7 @@ const validationSchema = Yup.object().shape({
 });
 
 const ListingEditScreen = () => {
+  const location = useLocation();
   const categories = [
     {
       backgroundColor: "#fc5c65",
@@ -133,6 +135,7 @@ const ListingEditScreen = () => {
         />
         <SubmitButton title="POST" />
       </AppForm>
+      <Text style={styles.paragraph}>{JSON.stringify(location)}</Text>
     </Screen>
   );
 };
