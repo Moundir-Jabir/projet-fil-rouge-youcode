@@ -45,7 +45,7 @@ export default LoginScreen;
 
 const styles = StyleSheet.create({
   container: {
-    margin: 10,
+    padding: 10,
   },
   logo: {
     width: 80,
