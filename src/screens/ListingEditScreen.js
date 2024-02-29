@@ -12,7 +12,7 @@ import CategoryPickerItem from "../components/CategoryPickerItem";
 import useLocation from "../hooks/useLocation";
 
 const validationSchema = Yup.object().shape({
-  title: Yup.string().required().min(3).label("Title"),
+  title: Yup.string().required().min(3).max(100).label("Title"),
   price: Yup.number().min(1).max(10000).label("Price"),
   category: Yup.object()
     .required()

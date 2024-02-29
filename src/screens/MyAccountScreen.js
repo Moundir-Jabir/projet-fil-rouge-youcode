@@ -5,7 +5,7 @@ import colors from "../config/colors";
 import MenuItem from "../components/MenuItem";
 import ListItemSeparator from "../components/lists/ListItemSeparator";
 
-const MyAccountScreen = () => {
+const MyAccountScreen = ({ navigation }) => {
   const menus = [
     {
       id: 1,
@@ -22,11 +22,12 @@ const MyAccountScreen = () => {
         name: "email",
         background: colors.green,
       },
+      targetScreen: "Messages",
     },
   ];
 
   return (
-    <Screen>
+    <Screen style={styles.container}>
       <Profil
         image={require("../assets/mosh.jpg")}
         title={"Mosh Hamedani"}
@@ -41,6 +42,7 @@ const MyAccountScreen = () => {
               name={item.icon.name}
               background={item.icon.background}
               title={item.title}
+              onPress={() => navigation.navigate(item.targetScreen)}
             />
           )}
           ItemSeparatorComponent={ListItemSeparator}
@@ -54,6 +56,9 @@ const MyAccountScreen = () => {
 export default MyAccountScreen;
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: colors.greyBackground,
+  },
   flatlistContainer: {
     marginVertical: 20,
   },
