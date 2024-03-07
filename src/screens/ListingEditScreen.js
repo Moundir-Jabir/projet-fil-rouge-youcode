@@ -1,5 +1,5 @@
 import Screen from "../components/Screen";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet } from "react-native";
 import * as Yup from "yup";
 import {
   AppForm,
@@ -10,80 +10,31 @@ import {
 } from "../components/forms";
 import CategoryPickerItem from "../components/CategoryPickerItem";
 import useLocation from "../hooks/useLocation";
+import useApi from "../hooks/useApi";
+import { getCategories } from "../api/categories";
+import { useEffect } from "react";
+import { addListing } from "../api/listings";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(3).max(100).label("Title"),
   price: Yup.number().min(1).max(10000).label("Price"),
-  category: Yup.object()
-    .required()
-    .nullable()
-    .shape({
-      label: Yup.string().required(),
-      value: Yup.number().required().positive().integer(),
-    })
-    .label("Category"),
+  category: Yup.object().required().nullable().label("Category"),
   description: Yup.string().optional().label("Description"),
   images: Yup.array().min(1).label("Images"),
 });
 
 const ListingEditScreen = () => {
   const location = useLocation();
-  const categories = [
-    {
-      backgroundColor: "#fc5c65",
-      icon: "floor-lamp",
-      label: "Furniture",
-      value: 1,
-    },
-    {
-      backgroundColor: "#fd9644",
-      icon: "car",
-      label: "Cars",
-      value: 2,
-    },
-    {
-      backgroundColor: "#fed330",
-      icon: "camera",
-      label: "Cameras",
-      value: 3,
-    },
-    {
-      backgroundColor: "#26de81",
-      icon: "cards",
-      label: "Games",
-      value: 4,
-    },
-    {
-      backgroundColor: "#2bcbba",
-      icon: "shoe-heel",
-      label: "Clothing",
-      value: 5,
-    },
-    {
-      backgroundColor: "#45aaf2",
-      icon: "basketball",
-      label: "Sports",
-      value: 6,
-    },
-    {
-      backgroundColor: "#4b7bec",
-      icon: "headphones",
-      label: "Movies & Music",
-      value: 7,
-    },
-    {
-      backgroundColor: "#a55eea",
-      icon: "book-open-variant",
-      label: "Books",
-      value: 8,
-    },
-    {
-      backgroundColor: "#778ca3",
-      icon: "application",
-      label: "Other",
-      value: 9,
-    },
-  ];
+  const { data: categories, request: loadCategories } = useApi(getCategories);
+  useEffect(() => {
+    loadCategories();
+  }, []);
+  const submitForm = async (values, { resetForm }) => {
+    const response = await addListing(values, location);
+    if (!response.ok) return alert("Could not save the listimg.");
+    alert("Success");
+    resetForm();
+  };
   return (
     <Screen style={styles.container}>
       <AppForm
@@ -95,7 +46,7 @@ const ListingEditScreen = () => {
           images: [],
         }}
         validationSchema={validationSchema}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={submitForm}
       >
         <AppFormImagePicker name="images" />
         <AppFormField
@@ -135,7 +86,6 @@ const ListingEditScreen = () => {
         />
         <SubmitButton title="POST" />
       </AppForm>
-      <Text style={styles.paragraph}>{JSON.stringify(location)}</Text>
     </Screen>
   );
 };

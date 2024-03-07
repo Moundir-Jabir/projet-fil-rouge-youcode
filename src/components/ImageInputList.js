@@ -10,7 +10,7 @@ import colors from "../config/colors";
 import * as ImagePicker from "expo-image-picker";
 import { useRef } from "react";
 
-const ImageInputList = ({ imageUris, onAddImage, onRemoveImage }) => {
+const ImageInputList = ({ images, onAddImage, onRemoveImage }) => {
   const ScrollViewRef = useRef();
   const pickImage = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -18,7 +18,7 @@ const ImageInputList = ({ imageUris, onAddImage, onRemoveImage }) => {
       quality: 0.5,
     });
     if (!result.canceled) {
-      onAddImage(result.assets[0].uri);
+      onAddImage(result.assets[0]);
     }
   };
   return (
@@ -28,9 +28,9 @@ const ImageInputList = ({ imageUris, onAddImage, onRemoveImage }) => {
         horizontal={true}
         onContentSizeChange={() => ScrollViewRef.current.scrollToEnd()}
       >
-        {imageUris.map((item, i) => (
+        {images.map((item, i) => (
           <TouchableOpacity key={i} onPress={() => onRemoveImage(item)}>
-            <Image source={{ uri: item }} style={styles.image} />
+            <Image source={{ uri: item.uri }} style={styles.image} />
           </TouchableOpacity>
         ))}
         <TouchableOpacity style={styles.btn} onPress={pickImage}>

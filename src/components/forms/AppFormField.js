@@ -3,11 +3,16 @@ import ErrorMessage from "./ErrorMessage";
 import { useFormikContext } from "formik";
 
 const AppFormField = ({ name, ...otherProps }) => {
-  const { touched, setFieldTouched, handleChange, errors } = useFormikContext();
+  const { touched, setFieldTouched, values, setFieldValue, errors } =
+    useFormikContext();
+  const handleText = (value) => {
+    setFieldValue(name, value);
+  };
   return (
     <>
       <AppTextInput
-        onChangeText={handleChange(name)}
+        onChangeText={handleText}
+        value={values[name]}
         onBlur={() => setFieldTouched(name)}
         {...otherProps}
       />

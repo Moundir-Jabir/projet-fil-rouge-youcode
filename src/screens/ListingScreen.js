@@ -2,12 +2,13 @@ import { View, StyleSheet, FlatList } from "react-native";
 import Screen from "../components/Screen";
 import Card from "../components/Card";
 import colors from "../config/colors";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getListings } from "../api/listings";
 import AppText from "../components/AppText";
 import AppButton from "../components/AppButton";
 import ActivityIndicator from "../components/ActivityIndicator";
 import useApi from "../hooks/useApi";
+import { baseURL } from "../api/client";
 
 const ListingScreen = ({ navigation }) => {
   const getListingsApi = useApi(getListings);
@@ -25,16 +26,21 @@ const ListingScreen = ({ navigation }) => {
       <ActivityIndicator visible={getListingsApi.loading} />
       <FlatList
         data={getListingsApi.data}
-        keyExtractor={(listing) => listing.id.toString()}
-        renderItem={({ item }) => (
-          <Card
-            title={item.title}
-            subTitle={item.price}
-            image={item.image}
-            onPress={() => navigation.navigate("ListingDetail", item)}
-          />
-        )}
+        keyExtractor={(listing) => listing._id}
+        renderItem={({ item }) => {
+          let imageUrl = `${baseURL}/listings/image/${item._id}/0`;
+          return (
+            <Card
+              title={item.title}
+              subTitle={`${item.price} $`}
+              image={{ uri: imageUrl }}
+              onPress={() => navigation.navigate("ListingDetail", item)}
+            />
+          );
+        }}
         ItemSeparatorComponent={<View style={styles.separator}></View>}
+        refreshing={getListingsApi.loading}
+        onRefresh={() => getListingsApi.request()}
       />
     </Screen>
   );

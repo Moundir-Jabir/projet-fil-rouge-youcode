@@ -6,16 +6,18 @@ import { useFormikContext } from "formik";
 const FormImagePicker = ({ name }) => {
   const { errors, values, setFieldValue, touched } = useFormikContext();
 
-  const addImage = (newUri) => {
-    setFieldValue(name, [...values[name], newUri]);
+  const addImage = (newImage) => {
+    setFieldValue(name, [...values[name], newImage]);
   };
 
-  const deleteImage = (uriDeleted) => {
+  const deleteImage = (imageToDelete) => {
     Alert.alert("Delete", "Are you sure you want to delete this image ?", [
       {
         text: "Yes",
         onPress: () => {
-          const result = values[name].filter((uri) => uri != uriDeleted);
+          const result = values[name].filter(
+            (image) => image.uri != imageToDelete.uri
+          );
           setFieldValue(name, result);
         },
       },
@@ -27,7 +29,7 @@ const FormImagePicker = ({ name }) => {
   return (
     <>
       <ImageInputList
-        imageUris={values[name]}
+        images={values[name]}
         onAddImage={addImage}
         onRemoveImage={deleteImage}
       />

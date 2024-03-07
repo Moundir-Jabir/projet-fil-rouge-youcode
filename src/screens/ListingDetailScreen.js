@@ -1,17 +1,18 @@
 import { Image, StyleSheet, View } from "react-native";
-
+import { baseURL } from "../api/client";
 import colors from "../config/colors";
 import AppText from "../components/AppText";
 import ListItem from "../components/lists/ListItem";
 
 const ListingDetailScreen = ({ route }) => {
-  const { title, price, image } = route.params;
+  const { title, price, _id } = route.params;
+  let imageUrl = `${baseURL}/listings/image/${_id}/0`;
   return (
     <View style={styles.container}>
-      <Image source={image} style={styles.image} />
+      <Image source={{ uri: imageUrl }} style={styles.image} />
       <View style={styles.detailsContainer}>
         <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subTitle}>{price}</AppText>
+        <AppText style={styles.subTitle}>{price} $</AppText>
         <View style={styles.listItem}>
           <ListItem
             image={require("../assets/mosh.jpg")}

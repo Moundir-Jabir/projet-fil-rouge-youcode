@@ -4,7 +4,7 @@ import colors from "../config/colors";
 import AppText from "./AppText";
 
 const CategoryPickerItem = ({ item, onPress }) => {
-  const { backgroundColor, icon, label } = item;
+  const { backgroundColor, icon, name } = item;
   return (
     <TouchableOpacity style={styles.container} onPress={onPress}>
       <Icon
@@ -13,7 +13,7 @@ const CategoryPickerItem = ({ item, onPress }) => {
         size={80}
         background={backgroundColor}
       />
-      <AppText style={styles.label}>{label}</AppText>
+      <AppText style={styles.label}>{name}</AppText>
     </TouchableOpacity>
   );
 };
