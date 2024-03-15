@@ -4,8 +4,14 @@ import Screen from "../components/Screen";
 import colors from "../config/colors";
 import MenuItem from "../components/MenuItem";
 import ListItemSeparator from "../components/lists/ListItemSeparator";
+import { useDispatch } from "react-redux";
+import { logout } from "../redux/auth/authSlice";
+import useUser from "../hooks/useUser";
+import { baseURL } from "../api/client";
 
 const MyAccountScreen = ({ navigation }) => {
+  const user = useUser();
+  const dispatch = useDispatch();
   const menus = [
     {
       id: 1,
@@ -25,13 +31,13 @@ const MyAccountScreen = ({ navigation }) => {
       targetScreen: "Messages",
     },
   ];
-
+  let imageUrl = `${baseURL}/user/image/${user._id}`;
   return (
     <Screen style={styles.container}>
       <Profil
-        image={require("../assets/mosh.jpg")}
-        title={"Mosh Hamedani"}
-        subTitle="programing@gmail.com"
+        image={{ uri: imageUrl }}
+        title={user.name}
+        subTitle={user.email}
       />
       <View style={styles.flatlistContainer}>
         <FlatList
@@ -48,7 +54,12 @@ const MyAccountScreen = ({ navigation }) => {
           ItemSeparatorComponent={ListItemSeparator}
         />
       </View>
-      <MenuItem name="logout" background="#ffe66d" title="Log Out" />
+      <MenuItem
+        name="logout"
+        background="#ffe66d"
+        title="Log Out"
+        onPress={() => dispatch(logout())}
+      />
     </Screen>
   );
 };

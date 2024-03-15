@@ -31,7 +31,7 @@ const ListingEditScreen = () => {
   }, []);
   const submitForm = async (values, { resetForm }) => {
     const response = await addListing(values, location);
-    if (!response.ok) return alert("Could not save the listimg.");
+    if (!response.ok) return alert("Could not save the listing.");
     alert("Success");
     resetForm();
   };

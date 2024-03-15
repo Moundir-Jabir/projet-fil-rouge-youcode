@@ -1,17 +1,15 @@
-import { StatusBar } from "react-native";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { NavigationContainer } from "@react-navigation/native";
-import AuthNavigator from "./src/navigation/AuthNavigator";
-import AppNavigator from "./src/navigation/AppNavigator";
-import navigationTheme from "./src/navigation/navigationTheme";
+import Navigation from "./Navigation";
+import { store } from "./src/redux/store";
+import { Provider } from "react-redux";
+import * as SplashScreen from "expo-splash-screen";
+
+SplashScreen.preventAutoHideAsync();
+setTimeout(() => SplashScreen.hideAsync(), 1000);
 
 export default function App() {
   return (
-    <NavigationContainer theme={navigationTheme}>
-      <GestureHandlerRootView style={{ flex: 1 }}>
-        <AppNavigator />
-        <StatusBar barStyle={"dark-content"} />
-      </GestureHandlerRootView>
-    </NavigationContainer>
+    <Provider store={store}>
+      <Navigation />
+    </Provider>
   );
 }
