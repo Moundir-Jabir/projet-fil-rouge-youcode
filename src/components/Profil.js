@@ -5,7 +5,13 @@ import colors from "../config/colors";
 const Profil = ({ image, title, subTitle }) => {
   return (
     <View style={styles.container}>
-      {image && <Image style={styles.image} source={image} />}
+      {image && (
+        <Image
+          style={styles.image}
+          source={image}
+          defaultSource={require("../assets/userDefault.webp")}
+        />
+      )}
       <View style={styles.textContainer}>
         <AppText style={styles.title}>{title}</AppText>
         <AppText style={styles.subTitle}>{subTitle}</AppText>

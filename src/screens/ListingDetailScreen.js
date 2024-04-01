@@ -3,16 +3,23 @@ import { baseURL } from "../api/client";
 import colors from "../config/colors";
 import AppText from "../components/AppText";
 import ListItem from "../components/lists/ListItem";
+import { useEffect } from "react";
+import useApi from "../hooks/useApi";
+import { getListingById } from "../api/listings";
 
 const ListingDetailScreen = ({ route }) => {
-  const { title, price, _id } = route.params;
-  let imageUrl = `${baseURL}/listings/image/${_id}/0`;
+  const { listingId } = route.params;
+  let imageUrl = `${baseURL}/listings/image/${listingId}/0`;
+  const { data, request } = useApi(getListingById);
+  useEffect(() => {
+    request(listingId);
+  });
   return (
     <View style={styles.container}>
       <Image source={{ uri: imageUrl }} style={styles.image} />
       <View style={styles.detailsContainer}>
-        <AppText style={styles.title}>{title}</AppText>
-        <AppText style={styles.subTitle}>{price} $</AppText>
+        <AppText style={styles.title}>{data?.title}</AppText>
+        <AppText style={styles.subTitle}>{data?.price} $</AppText>
         <View style={styles.listItem}>
           <ListItem
             image={require("../assets/mosh.jpg")}

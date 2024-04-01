@@ -4,10 +4,12 @@ import ListingEditScreen from "../screens/ListingEditScreen";
 import AccountNavigator from "./AccountNavigator";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import NewListingButton from "./NewListingButton";
+import useNotifications from "../hooks/useNotifications";
 
 const Tab = createBottomTabNavigator();
 
 const AppNavigator = () => {
+  useNotifications();
   return (
     <Tab.Navigator
       initialRouteName="Feed"

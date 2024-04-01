@@ -35,7 +35,9 @@ const ListingScreen = ({ navigation }) => {
                 title={item.title}
                 subTitle={`${item.price} $`}
                 image={{ uri: imageUrl }}
-                onPress={() => navigation.navigate("ListingDetail", item)}
+                onPress={() =>
+                  navigation.navigate("ListingDetail", { listingId: item._id })
+                }
               />
             );
           }}

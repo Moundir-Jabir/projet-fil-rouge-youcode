@@ -4,6 +4,8 @@ const endpoint = "/listings";
 
 const getListings = () => apiClient.get(endpoint);
 
+const getListingById = (id) => apiClient.get(`${endpoint}/${id}`);
+
 const addListing = (listing, location) => {
   const data = new FormData();
   data.append("title", listing.title);
@@ -25,4 +27,4 @@ const addListing = (listing, location) => {
   });
 };
 
-export { getListings, addListing };
+export { getListings, addListing, getListingById };

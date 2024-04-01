@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Done-with-it",
-    "slug": "Done-with-it",
+    "slug": "done-with-it",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
@@ -24,21 +24,28 @@
     "web": {
       "favicon": "./src/assets/favicon.png"
     },
-    "expo": {
-      "plugins": [
-        [
-          "expo-image-picker",
-          {
-            "photosPermission": "The app accesses your photos to let you share some photos of the product that you want to sell"
-          }
-        ],
-        [
-          "expo-location",
-          {
-            "locationWhenInUsePermission": "Allow the app to use your location."
-          }
-        ]
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share some photos of the product that you want to sell"
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow the app to use your location."
+        }
       ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "01afaab4-734c-4c3a-bf97-4338042e06f8"
+      }
+    },
+    "owner": "moundir",
+    "notification": {
+      "iosDisplayInForeground": true
     }
   }
 }
