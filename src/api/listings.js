@@ -2,7 +2,11 @@ import apiClient from "./client";
 
 const endpoint = "/listings";
 
-const getListings = () => apiClient.get(endpoint);
+const getListings = (selectedCategory) => {
+  let url = endpoint;
+  if (selectedCategory) url += `?category=${selectedCategory}`;
+  return apiClient.get(url);
+};
 
 const getListingById = (id) => apiClient.get(`${endpoint}/${id}`);
 
