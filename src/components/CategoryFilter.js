@@ -26,11 +26,18 @@ export const CategoryFilter = ({ value, setValue }) => {
               styles.item,
               {
                 backgroundColor:
-                  value == item._id ? colors.danger : colors.white,
+                  value == item._id ? colors.green : colors.white,
               },
             ]}
           >
-            <AppText style={styles.textItem}>{item.name}</AppText>
+            <AppText
+              style={[
+                styles.textItem,
+                { color: value == item._id ? colors.white : colors.black },
+              ]}
+            >
+              {item.name}
+            </AppText>
           </TouchableOpacity>
         )}
         ItemSeparatorComponent={<View style={styles.separator}></View>}

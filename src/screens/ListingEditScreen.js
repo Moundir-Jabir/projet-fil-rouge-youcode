@@ -17,7 +17,7 @@ import { addListing } from "../api/listings";
 
 const validationSchema = Yup.object().shape({
   title: Yup.string().required().min(3).max(100).label("Title"),
-  price: Yup.number().min(1).max(10000).label("Price"),
+  price: Yup.number().min(1).label("Price"),
   category: Yup.object().required().nullable().label("Category"),
   description: Yup.string().optional().label("Description"),
   images: Yup.array().min(1).label("Images"),
